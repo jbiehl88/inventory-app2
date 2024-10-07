@@ -5,12 +5,22 @@ const { Item } = require("../models")
 
 // GET /items
 itemRouter.get("/", async (req, res, next) => {
-  try {
-    const items = await Item.findAll();
-    res.send(items);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		const items = await Item.findAll()
+		res.send(items)
+	} catch (error) {
+		next(error)
+	}
+})
+
+//Create item to inventory
+itemRouter.post('/', async (req, res, next) => {
+	try {
+		const items = await Item.create(req.body);
+		res.send(items);
+	} catch (error) {
+		next(error);
+	}
 });
 
 //delete/an Item from the inventory
@@ -28,3 +38,4 @@ itemRouter.delete("/:id", async (req, res, next) => {
 });
 
 module.exports = itemRouter;
+
