@@ -12,4 +12,13 @@ itemRouter.get("/", async (req, res, next) => {
 	}
 })
 
+itemRouter.post('/', async (req, res, next) => {
+	try {
+		const items = await Item.create(req.body);
+		res.send(items);
+	} catch (error) {
+		next(error);
+	}
+});
+
 module.exports = itemRouter
