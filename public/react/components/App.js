@@ -26,7 +26,9 @@ export const App = () => {
 		<main>
 			<h1>Item Store</h1>
 			<h2>All things 🔥</h2>
-			<ItemList items={items} />
+			<div className="item-display">
+				<ItemList items={items} />
+			</div>
 		</main>
 	)
 }

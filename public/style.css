@@ -12,9 +12,13 @@
 
 .item-card {
   border: black 5px solid;
+  border-radius: 5%;
   width: 20%;
   height: auto;
   overflow: hidden;
+  text-align: center;
+  padding-bottom: 5px;
+  margin: 5px;
 }
 
 .image-size {
