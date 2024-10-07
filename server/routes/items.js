@@ -3,6 +3,7 @@ const itemRouter = express.Router()
 const { Item } = require("../models")
 
 
+
 // GET /items
 itemRouter.get("/", async (req, res, next) => {
 	try {
@@ -11,6 +12,17 @@ itemRouter.get("/", async (req, res, next) => {
 	} catch (error) {
 		next(error)
 	}
+})
+
+//GET one item
+itemRouter.get("/:id", async (req, res) => {
+    try{
+        const oneItem = await Item.findByPk(req.params.id)
+        res.json(oneItem);
+    } catch (error) {
+        console.error
+        next(error)
+    }
 })
 
 //Create item to inventory

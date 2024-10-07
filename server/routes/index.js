@@ -1,7 +1,10 @@
 const express = require("express")
 const router = express.Router()
 
+router.use(express.json());
+router.use(express.urlencoded({extended:true}));
 // different model routers
 router.use("/items", require("./items"))
+
 
 module.exports = router
