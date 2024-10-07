@@ -3,3 +3,23 @@
   box-sizing: border-box;
   background-color: rgb(223, 223, 223);
 }
+
+.item-display {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+}
+
+.item-card {
+  border: black 5px solid;
+  width: 20%;
+  height: auto;
+  overflow: hidden;
+}
+
+.image-size {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
