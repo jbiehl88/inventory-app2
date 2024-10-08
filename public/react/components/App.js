@@ -7,12 +7,12 @@ import { SingleItem } from "./SingleItem"
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api"
+import { handle } from "express/lib/application"
 
 export const App = () => {
 	const [items, setItems] = useState([])
-
 	const [singleItem, setSingleItem] = useState(null);	
-
+	const [addView, setAddView] = useState(false);
 	const [itemRefresh, setItemRefresh] = useState(false)
 
 
@@ -68,17 +68,23 @@ export const App = () => {
 	 
 
 	}
+	 function handleAddClick(e){
+		setAddView(!addView)
+	 }
 
 	return (
 		<main>
-			<h1 className="header">Tee-JAM Store</h1>
+			<h1 className="header">Tee-JAM Store<button onClick={handleAddClick}>Add Item</button></h1>
 			<h2 className="subheader">All items 🔥</h2>
-			<div className="item-display">
-			{singleItem ? <SingleItem item={singleItem} /> : 
-				<ItemList items={items} onItemClick={fetchItemById} />			
+			{addView?<ItemForm/>:
+				<>
+						<div className="item-display">
+						{singleItem ? <SingleItem item={singleItem} /> : 
+							<ItemList items={items} onItemClick={fetchItemById} />			
+						}
+						</div>
+				</>
 			}
-			
-			</div>
 		</main>
 	)
 }

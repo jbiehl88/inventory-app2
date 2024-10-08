@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { create } from 'react-test-renderer/cjs/react-test-renderer.production.min';
 import apiURL from '../api';
 
-const ItemForm = () => {
+export const ItemForm = () => {
     const [itemName, setItemName] = useState('')
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -12,7 +12,7 @@ const ItemForm = () => {
     const item = {
        name:itemName,
        description:description,
-       price:price, //fix this
+       price:price, 
        category:category,
        image: itemimage,
     };
@@ -35,7 +35,7 @@ const ItemForm = () => {
         setItemName('');
         setDescription('');
         setPrice('');
-        setCategory('');// check this
+        setCategory('');
         setItemImage('');
     };
 
@@ -43,7 +43,7 @@ const ItemForm = () => {
         <form onSubmit={handleSubmit}>
             <h2>Add New Item</h2>
 
-            <label htmlFor='item-name'>item Name:</label>
+            <label htmlFor='item-name'>Item Name:</label>
             <input 
              type='text'
              id='item-name'
@@ -53,16 +53,17 @@ const ItemForm = () => {
              /><br/>
 
              <label htmlFor='description'>Description:</label>
-             <textarea
+             <input
+                type='text'
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)} 
                 required
-             ></textarea><br/>
+             ></input><br/>
 
              <label htmlFor='price'>Price:</label>
              <input
-             type='number'
+             type='text'
              id='price'
              value={price}
              onChange={(e) => setPrice(e.value.target)}
@@ -71,17 +72,18 @@ const ItemForm = () => {
              required
              /><br/>
 
-             <label htmlFor='category'>Category</label>
-             <select
+             <label htmlFor='category'>Category:</label>
+             <input
+             type='text'
              id='category'
              value={category}
              onChange={(e) => setCategory(e.target.value)}
              required
-             />
+             /><br/>
 
              <label htmlFor='image'>Image:</label> 
              <input
-                type='file'
+                type='text'
                 id='image'
                 value={itemimage}
                 onChange={(e) => setItemImage(e.target.value)}
@@ -91,5 +93,3 @@ const ItemForm = () => {
         </form> 
     );
 };
-
-export default ItemForm
