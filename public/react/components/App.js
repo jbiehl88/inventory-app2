@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { ItemList } from "./ItemList"
+import { SingleItem } from "./SingleItem"
+
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api"
 
 export const App = () => {
 	const [items, setItems] = useState([])
+
+	const [singleItem, setSingleItem] = useState(null);	
+
 	const [itemRefresh, setItemRefresh] = useState(false)
+
 
 	async function fetchItems() {
 		try {
@@ -22,6 +28,17 @@ export const App = () => {
 	useEffect(() => {
 		fetchItems()
 	}, [itemRefresh])
+
+	//To fetch single item 
+	async function fetchItemById (id){	
+		try {
+			const response = await fetch(`${apiURL}/items/${id}`)
+			const data = await response.json();
+			setSingleItem(data);
+		} catch (err) {
+			console.log("Oh no an error! ", err)
+		}
+	  }
 
 	async function deleteItem(id) {
 		try {
@@ -42,13 +59,23 @@ export const App = () => {
 		} catch (err) {
 			console.log("Error deleting item: ", err)
 		}
+
+	 
+
+
+	 
+
 	}
+
 	return (
 		<main>
 			<h1 className="header">Tee-JAM Store</h1>
 			<h2 className="subheader">All items 🔥</h2>
 			<div className="item-display">
-				<ItemList items={items} />
+			{singleItem ? <SingleItem item={singleItem} /> : 
+				<ItemList items={items} onItemClick={fetchItemById} />			
+			}
+			
 			</div>
 		</main>
 	)
