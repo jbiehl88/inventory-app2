@@ -2,8 +2,6 @@ const express = require("express")
 const itemRouter = express.Router()
 const { Item } = require("../models")
 
-
-
 // GET /items
 itemRouter.get("/", async (req, res, next) => {
 	try {
@@ -16,38 +14,50 @@ itemRouter.get("/", async (req, res, next) => {
 
 //GET one item
 itemRouter.get("/:id", async (req, res) => {
-    try{
-        const oneItem = await Item.findByPk(req.params.id)
-        res.json(oneItem);
-    } catch (error) {
-        console.error
-        next(error)
-    }
+	try {
+		const oneItem = await Item.findByPk(req.params.id)
+		res.json(oneItem)
+	} catch (error) {
+		console.error
+		next(error)
+	}
 })
 
 //Create item to inventory
-itemRouter.post('/', async (req, res, next) => {
+itemRouter.post("/", async (req, res, next) => {
 	try {
-		const items = await Item.create(req.body);
-		res.send(items);
+		const items = await Item.create(req.body)
+		res.send(items)
 	} catch (error) {
-		next(error);
+		next(error)
 	}
-});
+})
+
+itemRouter.put("/:id", async (req, res, next) => {
+	try {
+		const itemId = req.params.id
+		const findItem = await Item.findByPk(itemId)
+		if (!findItem) return res.sendStatus(404)
+		const foundItem = await findItem.update({ ...findItem, ...req.body })
+		res.json(foundItem)
+	} catch (err) {
+		console.log(err)
+		next(err)
+	}
+})
 
 //delete/an Item from the inventory
 itemRouter.delete("/:id", async (req, res, next) => {
-  try {
-    const itemId = req.params.id;
-    const findItem = await Item.findByPk(itemId);
-    await findItem.destroy();
-    const allItems = await User.findAll();
-    res.json(allItems);
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
+	try {
+		const itemId = req.params.id
+		const findItem = await Item.findByPk(itemId)
+		await findItem.destroy()
+		const allItems = await User.findAll()
+		res.json(allItems)
+	} catch (error) {
+		console.error(error)
+		next(error)
+	}
+})
 
-module.exports = itemRouter;
-
+module.exports = itemRouter

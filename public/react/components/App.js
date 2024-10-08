@@ -8,7 +8,11 @@ import apiURL from "../api"
 
 export const App = () => {
 	const [items, setItems] = useState([])
+
 	const [singleItem, setSingleItem] = useState(null);	
+
+	const [itemRefresh, setItemRefresh] = useState(false)
+
 
 	async function fetchItems() {
 		try {
@@ -23,7 +27,7 @@ export const App = () => {
 
 	useEffect(() => {
 		fetchItems()
-	}, [])
+	}, [itemRefresh])
 
 	//To fetch single item 
 	async function fetchItemById (id){	
@@ -38,26 +42,31 @@ export const App = () => {
 
 	async function deleteItem(id) {
 		try {
-		  const response = await fetch(`${apiURL}/items/${id}`, {
-			method: "DELETE",
-		  });
-		  const data = await response.json();
-		  console.log("Item deleted: ", data);
-	
-		  // Re-fetch the updated list of Items
-		  const updatedItemsResponse = await fetch(`${apiURL}/`);
-		  const updatedItemsData = await updatedItemsResponse.json();
-		  setItems(updatedItemsData);
-	
-		  // Switch back to the list view after deletion
-		
+
+			const response = await fetch(`${apiURL}/items/${id}`, {
+				method: "DELETE",
+			})
+			const data = await response.json()
+			console.log("Item deleted: ", data)
+
+			// Re-fetch the updated list of Items
+			const updatedItemsResponse = await fetch(`${apiURL}/`)
+			const updatedItemsData = await updatedItemsResponse.json()
+			setItems(updatedItemsData)
+
+			// Switch back to the list view after deletion
+
 		} catch (err) {
-		  console.log("Error deleting item: ", err);
+			console.log("Error deleting item: ", err)
 		}
-	  }
+
+	 
 
 
 	 
+
+	}
+
 	return (
 		<main>
 			<h1 className="header">Tee-JAM Store</h1>
