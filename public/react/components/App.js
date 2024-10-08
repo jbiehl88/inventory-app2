@@ -31,7 +31,7 @@ export const App = () => {
 		  console.log("Item deleted: ", data);
 	
 		  // Re-fetch the updated list of Items
-		  const updatedItemsResponse = await fetch(`${apiURL}/`);
+		  const updatedItemsResponse = await fetch(`${apiURL}/items`);
 		  const updatedItemsData = await updatedItemsResponse.json();
 		  setItems(updatedItemsData);
 	
