@@ -1,27 +1,42 @@
 import React, {useState} from 'react';
+import { create } from 'react-test-renderer/cjs/react-test-renderer.production.min';
+import apiURL from '../api';
 
 const ItemForm = () => {
     const [itemName, setItemName] = useState('')
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [category, setCategory] = useState('electronics')
+    const [category, setCategory] = useState('')
+    const [itemimage, setItemImage] = useState('')
 
-    const handleSubmit = (event) => {
+    const item = {
+       name:itemName,
+       description:description,
+       price:price, //fix this
+       category:category,
+       image: itemimage,
+    };
+
+    const handleSubmit = async(event) => {
         event.preventDefault();
 
-        const item = {
-            itemName,
-            description,
-            price: parseFloat(price),
-            category,
-        };
+       
 
-        console.log(item);
+        const response = await fetch(`${apiURL}/items`, {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify(item)
+        })
+
+        const data = await response.json()
 
         setItemName('');
         setDescription('');
         setPrice('');
-        setCategory('electronics');
+        setCategory('');// check this
+        setItemImage('');
     };
 
     return (
@@ -64,8 +79,16 @@ const ItemForm = () => {
              required
              />
 
+             <label htmlFor='image'>Image:</label> 
+             <input
+                type='file'
+                id='image'
+                value={itemimage}
+                onChange={(e) => setItemImage(e.target.value)}
+             /><br />
+             
              <button type='submit'>Add Item</button>
-        </form>
+        </form> 
     );
 };
 
