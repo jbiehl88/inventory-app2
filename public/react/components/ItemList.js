@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Item } from "./Item"
 
-export const ItemList = ({ items }) => {
+
+export const ItemList = ({ items, onItemClick, fetchItemById }) => {	
+	
 	return (
 		<>
 			{items.map((item, idx) => {
-				return <Item item={item} key={idx} />
-			})}
+				return <Item item={item} key={idx} onItemClick={() => onItemClick(item.id)}/>				
+				
+			})}	
 		</>
 	)
 }
