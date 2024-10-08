@@ -4,6 +4,98 @@ module.exports = {
 	//     {"name" : "Franks", "image": "https://cdn.streamelements.com/uploads/1887a0da-3642-4795-b5f5-774d5b377e52.gif"},
 	//     {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
 	//   ],
+	users:[
+		{
+		  "name": "John",
+		  "lastName": "Doe",
+		  "email": "johndoe@example.com",
+		  "location": "New York"
+		},
+		{
+		  "name": "Jane",
+		  "lastName": "Smith",
+		  "email": "janesmith@example.com",
+		  "location": "Los Angeles"
+		},
+		{
+		  "name": "Alice",
+		  "lastName": "Johnson",
+		  "email": "alicejohnson@example.com",
+		  "location": "Chicago"
+		},
+		{
+		  "name": "Bob",
+		  "lastName": "Williams",
+		  "email": "bobwilliams@example.com",
+		  "location": "Houston"
+		},
+		{
+		  "name": "Charlie",
+		  "lastName": "Brown",
+		  "email": "charliebrown@example.com",
+		  "location": "Phoenix"
+		},
+		{
+		  "name": "David",
+		  "lastName": "Davis",
+		  "email": "daviddavis@example.com",
+		  "location": "Philadelphia"
+		},
+		{
+		  "name": "Emily",
+		  "lastName": "Miller",
+		  "email": "emilymiller@example.com",
+		  "location": "San Antonio"
+		},
+		{
+		  "name": "Frank",
+		  "lastName": "Jones",
+		  "email": "frankjones@example.com",
+		  "location": "San Diego"
+		},
+		{
+		  "name": "Grace",
+		  "lastName": "Wilson",
+		  "email": "gracewilson@example.com",
+		  "location": "Dallas"
+		},
+		{
+		  "name": "Henry",
+		  "lastName": "Taylor",
+		  "email": "henrytaylor@example.com",
+		  "location": "Austin"
+		},
+		{
+		  "name": "Isabella",
+		  "lastName": "Moore",
+		  "email": "isabellamoor@example.com",
+		  "location": "Jacksonville"
+		},
+		{
+		  "name": "Jack",
+		  "lastName": "Clark",
+		  "email": "jackclark@example.com",
+		  "location": "Fort Worth"
+		},
+		{
+		  "name": "Kate",
+		  "lastName": "Lee",
+		  "email": "katelee@example.com",
+		  "location": "Columbus"
+		},
+		{
+		  "name": "Leo",
+		  "lastName": "Walker",
+		  "email": "leowalker@example.com",
+		  "location": "Memphis"
+		},
+		{
+		  "name": "Mia",
+		  "lastName": "Baker",
+		  "email": "miabaker@example.com",
+		  "location": "El Paso"
+		}
+	  ],
 	items: [
 		{
 			name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
