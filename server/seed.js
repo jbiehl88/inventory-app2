@@ -12,7 +12,7 @@ const seed = async () => {
 
     // insert data
     await Promise.all(items.map((item) => Item.create(item)));
-    await Promise.all(users.map((user) => User.create(user)));
+    // await Promise.all(users.map((user) => User.create(user)));
 
     console.log("db populated!");
   } catch (error) {
