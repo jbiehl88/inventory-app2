@@ -22,10 +22,29 @@ export const App = () => {
 		fetchItems()
 	}, [])
 
+	async function deleteItem(id) {
+		try {
+		  const response = await fetch(`${apiURL}/items/${id}`, {
+			method: "DELETE",
+		  });
+		  const data = await response.json();
+		  console.log("Item deleted: ", data);
+	
+		  // Re-fetch the updated list of Items
+		  const updatedItemsResponse = await fetch(`${apiURL}/`);
+		  const updatedItemsData = await updatedItemsResponse.json();
+		  setItems(updatedItemsData);
+	
+		  // Switch back to the list view after deletion
+		
+		} catch (err) {
+		  console.log("Error deleting item: ", err);
+		}
+	  }
 	return (
 		<main>
-			<h1>Item Store</h1>
-			<h2>All things 🔥</h2>
+			<h1 className="header">Tee-JAM Store</h1>
+			<h2 className="subheader">All items 🔥</h2>
 			<div className="item-display">
 				<ItemList items={items} />
 			</div>
