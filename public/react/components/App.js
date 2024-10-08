@@ -25,6 +25,7 @@ export const App = () => {
 
 	async function deleteItem(id) {
 		try {
+
 			const response = await fetch(`${apiURL}/items/${id}`, {
 				method: "DELETE",
 			})
@@ -37,6 +38,7 @@ export const App = () => {
 			setItems(updatedItemsData)
 
 			// Switch back to the list view after deletion
+
 		} catch (err) {
 			console.log("Error deleting item: ", err)
 		}
