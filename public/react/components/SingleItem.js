@@ -1,6 +1,6 @@
 import React from "react"
 
-export const PopUp = ({ item }) => {
+export const SingleItem = ({ item }) => {
     return (
         <div className="item-card">
             <ul>
@@ -12,5 +12,3 @@ export const PopUp = ({ item }) => {
         </div>
     )
 }
-
-//the reason why you can have a destructed prop in here is because the component is being called elsewhere. This component is being called in Item??
