@@ -8,11 +8,8 @@ import apiURL from "../api"
 
 export const App = () => {
 	const [items, setItems] = useState([])
-
 	const [singleItem, setSingleItem] = useState(null)
-
 	const [itemRefresh, setItemRefresh] = useState(false)
-
 	const [addView, setAddView] = useState(false)
 
 	async function fetchItems() {
@@ -78,7 +75,11 @@ export const App = () => {
 				<ItemForm />
 			) : (
 				<div className="item-display">
-					{singleItem ? <SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} /> : <ItemList items={items} onItemClick={fetchItemById} />}
+					{singleItem ? (
+						<SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+					) : (
+						<ItemList items={items} onItemClick={fetchItemById} />
+					)}
 				</div>
 			)}
 		</main>
