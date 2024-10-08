@@ -61,12 +61,7 @@ export const App = () => {
 
 		} catch (err) {
 			console.log("Error deleting item: ", err)
-		}
-
-	 
-
-
-	 
+		}	 
 
 	}
 	 function handleAddClick(e){
