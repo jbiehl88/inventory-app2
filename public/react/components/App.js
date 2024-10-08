@@ -55,6 +55,7 @@ export const App = () => {
 			setItems(updatedItemsData)
 
 			// Switch back to the list view after deletion
+			setSingleItem(null)
 		} catch (err) {
 			console.log("Error deleting item: ", err)
 		}
