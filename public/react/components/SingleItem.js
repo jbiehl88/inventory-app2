@@ -1,14 +1,17 @@
-import React from "react"
+import React, { useState } from "react";
 
 export const SingleItem = ({ item }) => {
-    return (
-        <div className="item-card">
-            <ul>
-                <li>Name:{item.name}</li>
-                <li>Price:{item.price}</li>
-                <li>Category:{item.category}</li>
-                <li>Description:{item.description}</li>
-            </ul>
-        </div>
-    )
-}
+    const currency = item.price.toFixed(2);
+
+  return (
+    <div className="item-card">
+      <img className="image-size" src={item.image} alt={item.name}></img>  
+      <ul>
+        <h1>{item.name}</h1>
+        <h2>${currency}</h2>
+        <p>{item.category}</p>
+        <p>{item.description}</p>
+      </ul>
+    </div>
+  );
+};
