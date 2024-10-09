@@ -59,7 +59,7 @@ export const ItemForm = ({ addView, setAddView, itemRefresh, setItemRefresh }) =
 			<br />
 
 			<label htmlFor="image">Image:</label>
-			<input type="text" id="image" value={itemimage} onChange={(e) => setItemImage(e.target.value)} />
+			<input type="url" id="image" value={itemimage} onChange={(e) => setItemImage(e.target.value)} required />
 			<br />
 
 			<button type="submit">Add Item</button>
