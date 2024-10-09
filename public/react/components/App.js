@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ItemList } from "./ItemList"
 import { SingleItem } from "./SingleItem"
 import { ItemForm } from "./ItemForm"
+import { Search } from "./Search"
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api"
@@ -11,6 +12,7 @@ export const App = () => {
 	const [singleItem, setSingleItem] = useState(null)
 	const [itemRefresh, setItemRefresh] = useState(false)
 	const [addView, setAddView] = useState(false)
+	const [searchView, setSearchView] = useState(false)
 
 	async function fetchItems() {
 		try {
@@ -64,25 +66,38 @@ export const App = () => {
 		setSingleItem(null)
 	}
 
-	function handleAddClick() {
+	function handleAddClick(e) {
 		setAddView(!addView)
+	}
+
+	function handleSearchClick() {
+		setSearchView(!searchView)
 	}
 
 	return (
 		<main>
 			<h1 className="header">Tee-JAM Store</h1>
 			<button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
-			{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
-			{addView ? (
-				<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+			<br></br>
+			<button onClick={handleSearchClick}>{searchView ? "Back" : "Search"}</button>
+
+			{searchView ? (
+				<Search searchView={searchView} setSearchView={setSearchView} />
 			) : (
-				<div className="item-display">
-					{singleItem ? (
-						<SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+				<>
+					{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
+					{addView ? (
+						<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
 					) : (
-						<ItemList items={items} onItemClick={fetchItemById} />
+						<div className="item-display">
+							{singleItem ? (
+								<SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+							) : (
+								<ItemList items={items} onItemClick={fetchItemById} />
+							)}
+						</div>
 					)}
-				</div>
+				</>
 			)}
 		</main>
 	)
