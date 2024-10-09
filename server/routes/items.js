@@ -26,6 +26,19 @@ itemRouter.get("/:id", async (req, res) => {
 	}
 })
 
+itemRouter.get("/search/:name", async (req, res) => {
+    try {
+        //instead of using where? because we want to grab what is passed in?
+        const theName = await Item.findAll({where: {name: req.params.name}});
+        res.json(theName);
+
+    } catch (error) {
+		console.error
+		next(error)
+	}
+})
+
+
 //Create item to inventory
 itemRouter.post("/", [itemCheckNotEmptyTrim, checkForURL, checkForInt], async (req, res, next) => {
 	const errors = validationResult(req)

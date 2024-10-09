@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ItemList } from "./ItemList"
 import { SingleItem } from "./SingleItem"
 import { ItemForm } from "./ItemForm"
+import { Search } from "./Search"
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api"
@@ -70,7 +71,7 @@ export const App = () => {
 
 	return (
 		<main>
-			{/* <Search /> */}
+			<Search />
 			<h1 className="header">
 				Tee-JAM Store 
 			</h1>
