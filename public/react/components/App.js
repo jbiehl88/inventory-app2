@@ -70,6 +70,7 @@ export const App = () => {
 
 	return (
 		<main>
+			<Search />
 			<h1 className="header">
 				Tee-JAM Store <button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
 			</h1>
