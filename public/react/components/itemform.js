@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { create } from "react-test-renderer/cjs/react-test-renderer.production.min"
 import apiURL from "../api"
 
 export const ItemForm = ({ addView, setAddView, itemRefresh, setItemRefresh }) => {
@@ -60,7 +59,7 @@ export const ItemForm = ({ addView, setAddView, itemRefresh, setItemRefresh }) =
 			<br />
 
 			<label htmlFor="image">Image:</label>
-			<input type="text" id="image" value={itemimage} onChange={(e) => setItemImage(e.target.value)} />
+			<input type="url" id="image" value={itemimage} onChange={(e) => setItemImage(e.target.value)} required />
 			<br />
 
 			<button type="submit">Add Item</button>
