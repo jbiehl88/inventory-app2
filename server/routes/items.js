@@ -26,18 +26,6 @@ itemRouter.get("/:id", async (req, res) => {
 	}
 })
 
-itemRouter.get("/search/:name", async (req, res) => {
-    try {
-        const theName = await Item.findAll({where: {name: req.params.name}});
-        res.json(theName);
-
-    } catch (error) {
-		console.error
-		next(error)
-	}
-})
-
-
 //Create item to inventory
 itemRouter.post("/", [itemCheckNotEmptyTrim, checkForURL, checkForFloat], async (req, res, next) => {
 	const errors = validationResult(req)
@@ -76,11 +64,20 @@ itemRouter.delete("/:id", async (req, res, next) => {
 	try {
 		const itemId = req.params.id
 		const findItem = await Item.findByPk(itemId)
-		await findItem.destroy()
-		const allItems = await Item.findAll()
-		res.json(allItems)
+		const destroyedItem = await findItem.destroy()
+		res.json(destroyedItem)
 	} catch (error) {
 		console.error(error)
+		next(error)
+	}
+})
+
+itemRouter.get("/search/:name", async (req, res) => {
+	try {
+		const theName = await Item.findAll({ where: { name: req.params.name } })
+		res.json(theName)
+	} catch (error) {
+		console.error
 		next(error)
 	}
 })
