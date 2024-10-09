@@ -40,7 +40,7 @@ export const ItemForm = ({ addView, setAddView, itemRefresh, setItemRefresh }) =
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h2>Add New Item</h2>
+			<h2 className="addNewItem">Add New Item</h2>
 
 			<label htmlFor="item-name">Item Name:</label>
 			<input type="text" id="item-name" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
