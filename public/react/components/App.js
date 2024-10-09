@@ -71,8 +71,9 @@ export const App = () => {
 	return (
 		<main>
 			<h1 className="header">
-				Tee-JAM Store <button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
+				Tee-JAM Store 
 			</h1>
+				<button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
 			{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
 			{addView ? (
 				<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
