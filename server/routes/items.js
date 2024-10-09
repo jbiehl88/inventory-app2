@@ -64,9 +64,10 @@ itemRouter.delete("/:id", async (req, res, next) => {
 	try {
 		const itemId = req.params.id
 		const findItem = await Item.findByPk(itemId)
-		await findItem.destroy()
-		const allItems = await User.findAll()
-		res.json(allItems)
+		const destroyedItem = await findItem.destroy()
+		// const allItems = await Item.findAll()
+		// res.json(allItems)
+		res.json(destroyedItem)
 	} catch (error) {
 		console.error(error)
 		next(error)

@@ -64,16 +64,14 @@ export const App = () => {
 		setSingleItem(null)
 	}
 
-	function handleAddClick(e) {
+	function handleAddClick() {
 		setAddView(!addView)
 	}
 
 	return (
 		<main>
-			<h1 className="header">
-				Tee-JAM Store 
-			</h1>
-				<button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
+			<h1 className="header">Tee-JAM Store</h1>
+			<button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
 			{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
 			{addView ? (
 				<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
