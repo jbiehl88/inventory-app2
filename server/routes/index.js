@@ -7,6 +7,7 @@ router.use(express.urlencoded({extended:true}));
 // different model routers
 router.use("/items", require("./items"))
 router.use("/users",require("./users"))
+router.use("/search", require("./search"));
 
 
 module.exports = router
