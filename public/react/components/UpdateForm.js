@@ -31,7 +31,7 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 
 	return (
 		<>
-			<h3>Edit {item.name}</h3>
+			<h3 className="editTitle">Edit {item.name}</h3>
 			<br />
 			<form onSubmit={handleEdit}>
 				<br />
@@ -50,9 +50,9 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 				<label htmlFor="item-image">Image:</label>
 				<input type="text" value={itemUpdate.image} onChange={(e) => setItemUpdate({ ...itemUpdate, image: e.target.value })} />
 				<br />
-				<button type="submit">Submit</button>
+				<button className="form-btn" type="submit">Submit</button>
 				{"   "}
-				<button onClick={backToSingleView}>Back</button>
+				<button className="form-btn" onClick={backToSingleView}>Back</button>
 			</form>
 		</>
 	)
