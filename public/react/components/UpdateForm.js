@@ -31,7 +31,7 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 
 	return (
 		<>
-			<h3>Edit {item.name}</h3>
+			<h3 className="editTitle ">Edit {item.name}</h3>
 			<br />
 			<form onSubmit={handleEdit}>
 				<br />
