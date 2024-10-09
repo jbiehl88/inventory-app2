@@ -3,7 +3,7 @@ const itemRouter = express.Router()
 const { Item } = require("../models")
 const { validationResult } = require("express-validator")
 
-const { itemCheckNotEmptyTrim, checkForURL, checkForInt } = require("../middleware")
+const { itemCheckNotEmptyTrim, checkForURL, checkForFloat } = require("../middleware")
 
 // GET /items
 itemRouter.get("/", async (req, res, next) => {
@@ -27,7 +27,7 @@ itemRouter.get("/:id", async (req, res) => {
 })
 
 //Create item to inventory
-itemRouter.post("/", [itemCheckNotEmptyTrim, checkForURL, checkForInt], async (req, res, next) => {
+itemRouter.post("/", [itemCheckNotEmptyTrim, checkForURL, checkForFloat], async (req, res, next) => {
 	const errors = validationResult(req)
 	if (!errors.isEmpty()) {
 		res.json({ error: errors.array() })
@@ -41,7 +41,7 @@ itemRouter.post("/", [itemCheckNotEmptyTrim, checkForURL, checkForInt], async (r
 	}
 })
 
-itemRouter.put("/:id", [itemCheckNotEmptyTrim, checkForURL, checkForInt], async (req, res, next) => {
+itemRouter.put("/:id", [itemCheckNotEmptyTrim, checkForURL, checkForFloat], async (req, res, next) => {
 	const errors = validationResult(req)
 	if (!errors.isEmpty()) {
 		res.json({ error: errors.array() })
@@ -68,6 +68,16 @@ itemRouter.delete("/:id", async (req, res, next) => {
 		res.json(destroyedItem)
 	} catch (error) {
 		console.error(error)
+		next(error)
+	}
+})
+
+itemRouter.get("/search/:name", async (req, res) => {
+	try {
+		const theName = await Item.findAll({ where: { name: req.params.name } })
+		res.json(theName)
+	} catch (error) {
+		console.error
 		next(error)
 	}
 })
