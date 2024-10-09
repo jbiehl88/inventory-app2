@@ -18,4 +18,29 @@ describe("items test", () => {
     expect(response.body.name).toEqual(singleItem.name);
     expect(response.body.price).toEqual(singleItem.price);
   });
+
+  test("add new user with post method", async () => {
+    const mockData = items[5];
+    const response = await request(app)
+      .post("/api/items")
+      .send(mockData)
+      .expect(200);
+    expect(response.body.name).toEqual(mockData.name);
+    expect(response.body.description).toEqual(mockData.description);
+  });
+
+
+  test("update a single item using id ", async () => {
+    const itemId = 2;
+    const mockData = items[3];
+    console.log(mockData.name);
+
+    const response = await request(app)
+      .put(`/api/items/${itemId}`)
+      .send(mockData)
+      .expect(200);
+      console.log(response.body);
+      
+    expect(response.body.name).toEqual(mockData.name);
+  });
 });
