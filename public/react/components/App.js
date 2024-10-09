@@ -70,7 +70,7 @@ export const App = () => {
 
 	return (
 		<main>
-			<Search />
+			{/* <Search /> */}
 			<h1 className="header">
 				Tee-JAM Store 
 			</h1>
