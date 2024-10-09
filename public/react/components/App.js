@@ -50,6 +50,8 @@ export const App = () => {
 			const updatedItemsResponse = await fetch(`${apiURL}/items`)
 			const updatedItemsData = await updatedItemsResponse.json()
 			setItems(updatedItemsData)
+			setItemRefresh(!itemRefresh)
+			goBackToList()
 
 			// Switch back to the list view after deletion
 			setSingleItem(null)
@@ -73,7 +75,7 @@ export const App = () => {
 			</h1>
 			<h2 className="subheader">All items 🔥</h2>
 			{addView ? (
-				<ItemForm />
+				<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
 			) : (
 				<div className="item-display">
 					{singleItem ? (
