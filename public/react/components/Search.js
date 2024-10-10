@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import apiURL from "../api"
-import { SingleItem } from "./SingleItem"
 
-export const Search = () => {
+export const Search = ({ handleSearchClick, fetchItemById }) => {
 	const [foundItem, setFoundItem] = useState([])
 	const [searchValue, setSearchValue] = useState("")
 
@@ -21,6 +20,11 @@ export const Search = () => {
 		}
 	}
 
+	function handleSearchItemClick(id) {
+		fetchItemById(id)
+		handleSearchClick()
+	}
+
 	return (
 		<form onSubmit={handleSearchSubmit}>
 			<input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
@@ -34,7 +38,7 @@ export const Search = () => {
 				<>
 					{foundItem.map((item) => (
 						<div className="container">
-							<div className="item-details">
+							<div className="item-details" onClick={() => handleSearchItemClick(item.id)}>
 								<img className="image-size" src={item.image} alt={item.name}></img>
 								<h1 className="detail-info">{item.name}</h1>
 								<h2 className="detail-info">${item.price.toFixed(2)}</h2>

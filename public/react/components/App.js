@@ -82,7 +82,7 @@ export const App = () => {
 			<button onClick={handleSearchClick}>{searchView ? "Back" : "Search"}</button>
 
 			{searchView ? (
-				<Search searchView={searchView} setSearchView={setSearchView} />
+				<Search handleSearchClick={handleSearchClick} fetchItemById={fetchItemById} />
 			) : (
 				<>
 					{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
