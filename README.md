@@ -1,53 +1,42 @@
-![logo](https://user-images.githubusercontent.com/44912347/202296600-c5f247d6-9616-49db-88f0-38433429d781.jpg)
+# Tee-JAM Internal E-Commerce
 
 # Inventory App
-You are a team of developers for an e-commerce company. The Engineering team  is rebuilding their inventory tracking app from the ground up. Your team has been tasked with creating a Full-Sack (front and back end) RESTful CRUD application to track the items.
+
+Multiverse Project - An eCommerce store where internal consumers can directly view and manage products without any intermediary service over the internet. The goal was to develop an easy to use web-based interface where customers can search for products, and view a complete description of the product. Since the store is meant for internal use, Users are allowed the add, update and delete items.
 
 ## Getting Started
 
 1. `npm install`
 2. `npm run seed`
 3. `npm run server-dev`
-4. In a seperate terminal, `npm run client-dev`
+4. `npm run client-dev`
 
-## Inventory App “Tiers”
+![image](public\react\assets\TeeJAM.png)
 
-The tiers describe different levels of functionality in your application with the difficulty becoming more complex as you advance through the tiers. Start with Tier I, and complete everything you can, moving as quickly as possible as you can to Tier II. They are described as user stories.
+## Deployment
 
-Your team should strive to finish at least the first 4 tiers (a CRUD application) and attempt some of the bonus material.
+Coming Soon
 
-### Tier I: MVP Application
-- As a User, I want to view all items in inventory
-  - Sequelize Model for Item
-  - Name, Description, Price, Category, Image
-  - Express Route to GET all Items
-  - Front-end View for all Items
-- As a User, I want to view any individual item
-  - Express Route to GET one Item
-  - Front-end view for one item (click to see)
+## User Story
 
-### Tier II: Adding an Item
-- As a User, I want to add an item by completing a form
-  - Add Item front-end form
-  - Express Route to ADD the Item
-  - Form or Fetch request to add item when form is submitted
+- From the landing page, you are presented with a full list of available items.
+- Click on any item on the landing page and you will be presented with a new view of that item including all the details of that item as well as an option to go back to the landing page, update the item, or delete item.
+- Clicking on the update button, you will see a new view with 5 form fields that are prefilled with the existing information for easy editing. Once complete with making your changes, click submit and you will be returned to the landing page with the updated information present on the item you updated.
+- Clicking on the delete button will return you to the landing page with that specific item no longer in the list on the landing page.
+- At the top of the page there are two buttons, one to add an item to the database and landing page, and the other to search for items based on your input.
+- Clicking on the Add Item button, will take you to a new view that will present you with 5 form fields, name, description, price, category, and image. All fields are required for you to submit. The Price field allows only numbers to be entered (ex. 500.00 or 500). Finally the image field only allows for URLs to be submitted (ex. http://something.com). -Clicking on the Search button with bring you to another view that has one form field and a submit button allowing you to search for items based on partial information, such as, Mens or Gold. Once the submit button is pressed, any item that contains the entered information will be displayed on the screen including all the details of that item.
 
-### Tier III: Deleting an Item
-- As a User, I want to  remove an item from inventory
-  - Delete button on Single Item View
-  - Express Route to DELETE the Item
-  - Fetch request to delete item when button is clicked
+## Built With
 
-### Tier IV: Updating an Item
-- As a User, I want to edit an item by filling a form
-  - Edit form on Single Item View
-  - Express Route to UPDATE the Item
-  - Fetch request to update item when form is submitted
+- Node.js
+- Express
+- React
+- Sequelize
+- SQlite
 
-### Tier V: Bonus Stuff
-- Models, Routes for Users and Orders
-- As a User, I want my Inventory site to be visually stunning
-- As a User, I want to be able to search through data based on search criteria
-- As a User, I want to add items to a cart and purchase
-- As a User, I want to use the application on a mobile browser
-- As an Admin, I want all Add and Edit item requests to have server-side validations
+## Authors
+
+- [Mahdi Belabbas](https://github.com/idham19)
+- [Tiffany Hill](https://github.com/talph101)
+- [Jordan Biehl](https://github.com/jbiehl88)
+- [Adrian Burke](https://github.com/AdrianBurke1)
