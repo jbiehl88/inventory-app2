@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ItemList } from "./ItemList"
 import { SingleItem } from "./SingleItem"
 import { ItemForm } from "./ItemForm"
+import { Search } from "./Search"
 
 // import and prepend the api url to any fetch calls
 import apiURL from "../api"
@@ -11,6 +12,7 @@ export const App = () => {
 	const [singleItem, setSingleItem] = useState(null)
 	const [itemRefresh, setItemRefresh] = useState(false)
 	const [addView, setAddView] = useState(false)
+	const [searchView, setSearchView] = useState(false)
 
 	async function fetchItems() {
 		try {
@@ -50,6 +52,8 @@ export const App = () => {
 			const updatedItemsResponse = await fetch(`${apiURL}/items`)
 			const updatedItemsData = await updatedItemsResponse.json()
 			setItems(updatedItemsData)
+			setItemRefresh(!itemRefresh)
+			goBackToList()
 
 			// Switch back to the list view after deletion
 			setSingleItem(null)
@@ -66,22 +70,34 @@ export const App = () => {
 		setAddView(!addView)
 	}
 
+	function handleSearchClick() {
+		setSearchView(!searchView)
+	}
+
 	return (
 		<main>
-			<h1 className="header">
-				Tee-JAM Store <button onClick={handleAddClick}>Add Item</button>
-			</h1>
-			<h2 className="subheader">All items 🔥</h2>
-			{addView ? (
-				<ItemForm />
+			<h1 className="header">Tee-JAM Store</h1>
+			{searchView || singleItem ? <></> : <button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>}
+			<br></br>
+			{addView || singleItem ? <></> : <button onClick={handleSearchClick}>{searchView ? "Back" : "Search"}</button>}
+
+			{searchView ? (
+				<Search handleSearchClick={handleSearchClick} fetchItemById={fetchItemById} />
 			) : (
-				<div className="item-display">
-					{singleItem ? (
-						<SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+				<>
+					{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
+					{addView ? (
+						<ItemForm addView={addView} setAddView={setAddView} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
 					) : (
-						<ItemList items={items} onItemClick={fetchItemById} />
+						<div className="item-display">
+							{singleItem ? (
+								<SingleItem item={singleItem} goBack={goBackToList} deleteItem={deleteItem} itemRefresh={itemRefresh} setItemRefresh={setItemRefresh} />
+							) : (
+								<ItemList items={items} onItemClick={fetchItemById} />
+							)}
+						</div>
 					)}
-				</div>
+				</>
 			)}
 		</main>
 	)

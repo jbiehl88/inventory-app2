@@ -1,8 +1,8 @@
 * {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   box-sizing: border-box;
-  background-color: rgb(234, 232, 232);
+  background-color: rgb(218, 215, 215);
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -10,6 +10,7 @@
 
 .header {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .subheader {
@@ -77,6 +78,7 @@
   background-color: white;
   color: green;
   transform: scale(1.05);
+  border: solid 1px green;
 }
 .deleteBtn {
   border-radius: 5%;
@@ -91,6 +93,7 @@
   background-color: white;
   color: red;
   transform: scale(1.05);
+  border: solid 1px red;
 }
 
 .editBtn {
@@ -106,6 +109,7 @@
   background-color: white;
   color: black;
   transform: scale(1.05);
+  border: solid 1px black;
 }
 .item-details {
   border: solid 1px black;
@@ -123,8 +127,9 @@
 
 .item-details:hover {
   transform: scale(1.02);
-  background-color: rgb(245, 239, 231);
+  background-color: rgb(247, 221, 188);
   transition: all 0.4s ease-in-out;
+  border: solid 3px white;
 }
 .detail-info {
   background-color: antiquewhite;
@@ -132,7 +137,7 @@
 
 }
 .item-details:hover .detail-info {
-  background-color: rgb(245, 239, 231);
+  background-color: rgb(247, 221, 188);
   transition: all 0.4s ease-in-out;
 }
 
@@ -181,6 +186,8 @@ label {
 /* Input fields styling */
 input[type="text"],
 input[type="number"],
+input[type="url"],
+.searchInput,
 textarea {
   width: 100%;
   padding: 5px;
@@ -202,7 +209,7 @@ textarea:focus {
 
 /* Button styling */
 button {
-  width: 100%;
+  width: 48%;
   padding: 10px;
   background-color: #007bff;
   color: white;
@@ -216,6 +223,7 @@ button {
 button:hover {
   background-color: #0056b3;
   transform: scale(1.03);
+  border: solid 3px white;
 }
 
 /* Add some spacing between form elements */
@@ -228,7 +236,14 @@ button {
 .editTitle {
   margin-bottom: 1rem;
 }
-
+.addNewItem{
+  background: white;
+}
+.btn-in-update-view{
+  display: flex;
+  justify-content: space-between;
+  background: white;
+}
 /* Responsive design for smaller screens */
 @media (max-width: 600px) {
   form {
@@ -236,7 +251,5 @@ button {
     max-width: 100%;
   }
 
-  /* .form-btn {
-    font-size: 16px;
-  } */
+
 }

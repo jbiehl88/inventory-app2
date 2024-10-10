@@ -12,17 +12,21 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 
 	async function handleEdit(e) {
 		e.preventDefault()
-		const itemKey = item.id
-		const res = await fetch(`${apiURL}/items/${itemKey}`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(itemUpdate),
-		})
-		const data = await res.json()
-		setItemRefresh(!itemRefresh)
-		goBack()
+		try {
+			const itemKey = item.id
+			const res = await fetch(`${apiURL}/items/${itemKey}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(itemUpdate),
+			})
+			const data = await res.json()
+			setItemRefresh(!itemRefresh)
+			goBack()
+		} catch {
+			console.log(err)
+		}
 	}
 
 	function backToSingleView() {
@@ -31,7 +35,7 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 
 	return (
 		<>
-			<h3 className="editTitle">Edit {item.name}</h3>
+			<h3 className="editTitle ">Edit {item.name}</h3>
 			<br />
 			<form onSubmit={handleEdit}>
 				<br />
@@ -50,9 +54,10 @@ export const UpdateForm = ({ item, itemRefresh, setItemRefresh, editView, setEdi
 				<label htmlFor="item-image">Image:</label>
 				<input type="text" value={itemUpdate.image} onChange={(e) => setItemUpdate({ ...itemUpdate, image: e.target.value })} />
 				<br />
-				<button className="form-btn" type="submit">Submit</button>
-				{"   "}
-				<button className="form-btn" onClick={backToSingleView}>Back</button>
+				<div className="btn-in-update-view">
+					<button type="submit">Submit</button>
+					<button onClick={backToSingleView}>Back</button>
+				</div>
 			</form>
 		</>
 	)
