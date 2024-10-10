@@ -2,6 +2,7 @@ const express = require("express")
 const itemRouter = express.Router()
 const { Item } = require("../models")
 const { validationResult } = require("express-validator")
+const { Op } = require("sequelize")
 
 const { itemCheckNotEmptyTrim, checkForURL, checkForFloat } = require("../middleware")
 
@@ -74,7 +75,7 @@ itemRouter.delete("/:id", async (req, res, next) => {
 
 itemRouter.get("/search/:name", async (req, res) => {
 	try {
-		const theName = await Item.findAll({ where: { name: req.params.name } })
+		const theName = await Item.findAll({ where: { name: { [Op.like]: `%${req.params.name}%` } } })
 		res.json(theName)
 	} catch (error) {
 		console.error
