@@ -11,7 +11,7 @@ Multiverse Project - An eCommerce store where internal consumers can directly vi
 3. `npm run server-dev`
 4. `npm run client-dev`
 
-![image](inventory-app/public/react/assets/TeeJAM.png)
+![image](/public/react/assets/TeeJAM.png)
 
 ## Deployment
 
