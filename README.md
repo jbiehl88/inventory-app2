@@ -15,7 +15,7 @@ Multiverse Project - An eCommerce store where internal consumers can directly vi
 
 ## Deployment
 
-Coming Soon
+[Live Site](https://inventory-app-ujdx.onrender.com)
 
 ## User Story
 
