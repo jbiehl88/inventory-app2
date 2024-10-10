@@ -1,5 +1,5 @@
 * {
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   box-sizing: border-box;
   background-color: rgb(218, 215, 215);
@@ -187,6 +187,7 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="url"],
+.searchInput,
 textarea {
   width: 100%;
   padding: 5px;
@@ -250,7 +251,5 @@ button {
     max-width: 100%;
   }
 
-  /* .form-btn {
-    font-size: 16px;
-  } */
+
 }

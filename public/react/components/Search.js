@@ -23,9 +23,9 @@ export const Search = () => {
 
 	return (
 		<form onSubmit={handleSearchSubmit}>
-			<input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
+			<input className="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
 			<button type="submit">Search</button>
-			{foundItem.name == undefined ? (
+			{!foundItem || !foundItem.name ? (
 				<>
 					<br />
 					No Item Found
