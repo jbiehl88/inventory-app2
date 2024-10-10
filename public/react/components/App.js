@@ -77,12 +77,12 @@ export const App = () => {
 	return (
 		<main>
 			<h1 className="header">Tee-JAM Store</h1>
-			<button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>
+			{searchView || singleItem ? <></> : <button onClick={handleAddClick}>{addView ? "Back" : "Add Item"}</button>}
 			<br></br>
-			<button onClick={handleSearchClick}>{searchView ? "Back" : "Search"}</button>
+			{addView || singleItem ? <></> : <button onClick={handleSearchClick}>{searchView ? "Back" : "Search"}</button>}
 
 			{searchView ? (
-				<Search searchView={searchView} setSearchView={setSearchView} />
+				<Search handleSearchClick={handleSearchClick} fetchItemById={fetchItemById} />
 			) : (
 				<>
 					{addView ? <></> : singleItem ? <></> : <h2 className="subheader">All items 🔥</h2>}
