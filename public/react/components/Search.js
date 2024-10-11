@@ -21,8 +21,8 @@ export const Search = ({ handleSearchClick, fetchItemById }) => {
 	}
 
 	function handleSearchItemClick(id) {
-		fetchItemById(id)
 		handleSearchClick()
+		fetchItemById(id)
 	}
 
 	return (
@@ -30,8 +30,7 @@ export const Search = ({ handleSearchClick, fetchItemById }) => {
 			<input className="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
 			<button type="submit">Search</button>
 
-			{foundItem.length == 0 ? (
-
+			{foundItem == null ? (
 				<>
 					<br />
 					No Item Found
