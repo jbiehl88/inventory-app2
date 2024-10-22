@@ -4,14 +4,10 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const cors = require('cors');
 
 //Allow CORS requests
-app.use(cors({
-  origin: `http://localhost:3000`, // Replace with your frontend URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-}));
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:1234' }));
 // logging middleware
 app.use(morgan('dev'));
 // parsing middleware for form input data & json
