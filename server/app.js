@@ -7,7 +7,7 @@ const path = require('path');
 
 //Allow CORS requests
 const cors = require('cors');
-app.use(cors());
+app.use(cors({ origin: `http://${process.env.REACT_APP_API_SERVER}` }));
 // logging middleware
 app.use(morgan('dev'));
 // parsing middleware for form input data & json
