@@ -1,5 +1,5 @@
 // load environment variables from .env or elsewhere
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -7,8 +7,8 @@ const path = require('path');
 
 //Allow CORS requests
 const cors = require('cors');
-app.use(cors({ origin: process.env.REACT_APP_API_SERVER }));
-// logging middleware
+app.use(cors({ origin: 'http://192.168.64.132' }));
+// logging middlewar
 app.use(morgan('dev'));
 // parsing middleware for form input data & json
 app.use(express.urlencoded({ extended: false }));
