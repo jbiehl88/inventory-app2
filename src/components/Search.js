@@ -30,7 +30,7 @@ export const Search = ({ handleSearchClick, fetchItemById }) => {
 			<input className="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
 			<button type="submit">Search</button>
 
-			{foundItem == null ? (
+			{foundItem == null || foundItem.length === 0 ? (
 				<>
 					<br />
 					No Item Found
