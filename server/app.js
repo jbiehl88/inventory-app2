@@ -17,6 +17,9 @@ app.use(express.json());
 // serve up static files (e.g. html and css files)
 app.use(express.static(path.join(__dirname, '../dist')));
 
+// Serve static files from the 'src' directory under the /src path
+app.use('/src', express.static(path.join(__dirname, 'src')));
+
 // api router
 app.use('/api', require('./routes'));
 
